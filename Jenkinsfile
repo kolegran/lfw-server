@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'gradle:latest'
+            image 'openjdk:11'
             args '-v /root/.m2:/root/.m2'
         }
     }
@@ -9,7 +9,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-
                 ./gradlew clean build
                 '''
             }
