@@ -10,7 +10,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    ./gradlew clean build
+                    docker build -t kolegran/lfw-server
                 '''
             }
         }
