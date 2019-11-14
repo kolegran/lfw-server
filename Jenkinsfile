@@ -15,10 +15,13 @@ pipeline {
         }
         stage('Publish') {
             agent {
-                docker {
-                    build '-t kolegran/lfw-server:latest .'
-                    push 'kolegran/lfw-server:latest'
-                }
+                docker {}
+            }
+            steps {
+                sh '''
+                    docker build -t kolegran/lfw-server:latest .
+                    docker push kolegran/lfw-server:latest
+                '''
             }
         }
     }
