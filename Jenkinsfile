@@ -1,12 +1,17 @@
 pipeline {
     agent {
-        docker {
-            image 'openjdk:11'
-            args '-v /root/.m2:/root/.m2'
+        node {
+            label 'docker'
         }
     }
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'openjdk:11'
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
             steps {
                 sh '''
                     ./gradlew clean build
@@ -14,12 +19,8 @@ pipeline {
             }
         }
         stage('Publish') {
-            agent {
-                docker {}
-            }
             steps {
                 sh '''
-                    docker build -t kolegran/lfw-server:latest .
                     docker push kolegran/lfw-server:latest
                 '''
             }
