@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t kolegran/lfw-server'
+                sh 'docker build -t kolegran/lfw-server .'
             }
         }
         stage('Publish') {
