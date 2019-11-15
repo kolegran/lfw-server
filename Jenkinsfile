@@ -1,14 +1,25 @@
 pipeline {
+    environment {
+        registry = "kolegran/lfw-server"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
+
     agent any
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t kolegran/lfw-server .'
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
         stage('Publish') {
             steps {
-                sh 'docker push kolegran/lfw-server:latest'
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
             }
         }
     }
