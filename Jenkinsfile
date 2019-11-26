@@ -30,7 +30,7 @@ pipeline {
                 script {
                     def image = docker.image("${dockerImage.imageName()}")
                     image.pull()
-                    image.run()
+                    image.run('-p 8080:8080 --name lets-forward')
                 }
             }
         }
