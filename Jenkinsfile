@@ -28,7 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    def image = docker.image("${dockerImage.imageName()}:latest")
+                    def image = docker.image("${dockerImage.imageName()}")
                     image.pull()
                     image.run()
                 }
