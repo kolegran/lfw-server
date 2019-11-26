@@ -25,5 +25,14 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    def image = docker.image("${dockerImage.imageName()}:latest")
+                    image.pull()
+                    image.run()
+                }
+            }
+        }
     }
 }
