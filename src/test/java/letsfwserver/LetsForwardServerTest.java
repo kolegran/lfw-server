@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class LetsFwServerTest {
+public class LetsForwardServerTest {
 
     @Test
     public void test() {

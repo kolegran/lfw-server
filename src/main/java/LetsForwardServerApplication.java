@@ -1,7 +1,7 @@
-import letsfwserver.LetsFwServer;
+import letsfwserver.LetsForwardServer;
 
 public class LetsForwardServerApplication {
     public static void main(String[] args) {
-        new LetsFwServer().start();
+        new LetsForwardServer().start();
     }
 }
